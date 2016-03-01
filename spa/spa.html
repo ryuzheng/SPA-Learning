@@ -1,10 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>SPA Starter</title>
-</head>
-<body>
 
+  <!--stylesheets-->
+  <link rel="stylesheet" href="css/spa.css" type="text/css">
+  <link rel="stylesheet" href="css/spa.shell.css" type="text/csss">
+
+  <!--third-party javascript-->
+  <script src="//cdn.bootcss.com/jquery/2.2.1/jquery.min.js"></script>
+  <script src="js/jquery.uriAnchor.js" charset="utf-8"></script>
+
+  <!--our javascript-->
+  <script src="js/spa.js" charset="utf-8"></script>
+  <script src="js.spa.shell.js" charset="utf-8"></script>
+  <script type="text/javascript">
+    $(function() {
+      spa.initModule($('#spa'));
+    });
+  </script>
+</head>
+
+<body>
+  <div id="spa">                                                                                                                                                  </div>
 </body>
+
 </html>
