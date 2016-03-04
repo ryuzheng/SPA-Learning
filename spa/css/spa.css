@@ -17,8 +17,10 @@ ul,
 dl {
   list-style-position: inside;
 }
+/** End reset */
+/** Begin standard selectors */
 body {
-  font: 13px 'Trebuchet MS', verdana, Helvetica, Arial, sans-serif;
+  font: 13px 'Trebuchet MS', Verdana, Helvetica, Arial, sans-serif;
   color: #444;
   background-color: #888;
 }
@@ -36,21 +38,25 @@ strong {
   font-weight: 800;
   color: #000;
 }
+/** End standard selectors */
+/** Begin spa namespace selectors */
 #spa {
   position: absolute;
   top: 8px;
-  right: 8px;
-  bottom: 8px;
   left: 8px;
+  bottom: 8px;
+  right: 8px;
   min-height: 500px;
   min-width: 500px;
   overflow: hidden;
   background-color: #fff;
   border-radius: 0 8px 0 8px;
 }
+/** End spa namespace selectors */
+/** Begin utility selectors */
 .spa-x-clearfloat {
-  height: 0!important;
-  float: none!important;
-  visibility: hidden!important;
-  clear: both!important;
+  height: 0 !important;
+  float: none !important;
+  visibility: hidden !important;
+  clear: both !important;
 }

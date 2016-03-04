@@ -5,17 +5,18 @@ spa.shell = (function() {
   //Begin 声明所有变量
   var
     configMap = {
-      main_html: String() + '<div class="spa-shell-head">' +
+      main_html: String() + '<div id="spa">' +
+        '<div class="spa-shell-head">' +
         '<div class="spa-shell-head-logo"></div>' +
-        '<div class="spa-shell-dead-acct"></div>' +
+        '<div class="spa-shell-head-acct"></div>' +
         '<div class="spa-shell-head-search"></div>' +
         '</div>' +
         '<div class="spa-shell-main">' +
         '<div class="spa-shell-main-nav"></div>' +
         '<div class="spa-shell-main-content"></div>' +
-        '</div>' +
+        ' </div>' +
         '<div class="spa-shell-foot"></div>' +
-        '<div class="spa-shell-chat">' +
+        '<div class="spa-shell-chat"></div>' +
         '<div class="spa-shell-modal"></div>' +
         '</div>',
       chat_extend_time: 250,
@@ -112,7 +113,11 @@ spa.shell = (function() {
 
   //begin Event Handles jquery事件处理函数
   onClickChat = function(event) {
-    toggleChat(stateMap.is_chat_retracted);
+    if (toggleChat(stateMap.is_chat_retracted)) {
+      $.uriAnchor.setAnchor({
+        chat: (stateMap.is_chat_retracted ? 'open' : 'closed')
+      });
+    }
     return false;
   };
   //end Event Handles jquery事件处理函数
