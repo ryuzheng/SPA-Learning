@@ -5,6 +5,12 @@ spa.shell = (function() {
   //Begin 声明所有变量
   var
     configMap = {
+      anchor_$chema_map: {
+        chat: {
+          opne: true,
+          closed: true
+        }
+      },
       main_html: String() + '<div id="spa">' +
         '<div class="spa-shell-head">' +
         '<div class="spa-shell-head-logo"></div>' +
@@ -28,13 +34,20 @@ spa.shell = (function() {
     },
     stateMap = {
       $container: null,
+      anchor_map: {},
       is_chat_retracted: true
     },
     jqueryMap = {},
-    setJqueryMap, toggleChat, onClickChat, initModule;
+    copyAnchorMap, setJqueryMap, toggleChat,
+    changeAnchorPart, onHashchange,
+    onClickChat, initModule;
   //End 声明所有变量
 
   //Begin Utility Methods 保留区块，不与页面元素交互
+  //Return copy of stored anchor map;minimizes overhead
+  copyeAnchorMap = function() {
+    return $.extend(true, {}, stateMap.anchor_map);
+  };
   //End Utility Methods 保留区块，不与页面元素交互
 
   //Begin 创建和操作DOM的函数
@@ -109,7 +122,55 @@ spa.shell = (function() {
     //end retract chat sider
   };
   //end DOM method /toggleChat/
-  //end 创建和操作DOM的函数
+
+  //begin DOm method /changeAnchorPart/
+  //功能： 对锚进行原子更新
+  //判断：
+  //  *arg_map - URI 锚需要修改的那一部分的映射
+  //返回：
+  //  *true - URI 锚部分已经修改
+  //  *false - URI 锚部分不能被修改
+  //操作：
+  //  存储在 stateMap.anchor_map 的当前锚代表
+  //  查看想要更改的 uriAnchor
+  //  This method
+  //  * 使用 copyAnchorMap() 创建一份当前映射的拷贝
+  //  * 使用 arg_map 修改键值
+  //  * 管理在编码中的独立和依赖的值之间的区别
+  //  * 试图用 uriAnchor 去修改 URI
+  //  * 成功时返回 true, 失败时返回 flase
+  //
+  changeAnchorPart = function(arg_map) {
+      var
+        anchor_map_revise = copyeAnchorMap(),
+        bool_return = true,
+        key_name, key_name_dep;
+
+      // Begin merge change into anchor map
+      KEYVAL:
+        for (key_name in arg_map) {
+          if (arg_map.hasOwnProperty(key_name)) {
+
+            // skip dependent keys during iteration
+            if (key_name.indexOf('_') === 0) {
+              continue KEYVAL;
+            }
+
+            //update independent key value
+            anchor_map_revise[key_name] = arg_map[key_name];
+
+            //update matching dependent key
+            key_name_dep = '_' + key_name;
+            if (arg_map[key_name_dep]) {
+              anchor_map_revise[key_name_dep] = arg_map[key_name_dep];
+            }
+          }
+        }
+        // End merge changes into anchor map
+
+      // Begin 
+    }
+    //end 创建和操作DOM的函数
 
   //begin Event Handles jquery事件处理函数
   onClickChat = function(event) {
