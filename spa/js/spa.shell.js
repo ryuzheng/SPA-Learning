@@ -221,7 +221,7 @@ spa.shell = (function() {
         case 'open':
           toggleChat(true);
           break;
-        case 'closed';
+        case 'closed':
         toggleChat(false);
         break;
         default:
