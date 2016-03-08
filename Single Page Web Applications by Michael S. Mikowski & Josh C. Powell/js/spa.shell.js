@@ -1,8 +1,9 @@
-//spa.shell.js
-//Shell module for SPA
+/*spa.shell.js
+ *Shell module for SPA
+ */
 
 spa.shell = (function() {
-  //  Begin 声明所有变量
+  //-----Begin 声明所有变量-----
   var
     configMap = {
       anchor_$chema_map: {
@@ -41,16 +42,16 @@ spa.shell = (function() {
     copyAnchorMap, setJqueryMap, toggleChat,
     changeAnchorPart, onHashchange,
     onClickChat, initModule;
-  //  End 声明所有变量
+  //-----End 声明所有变量-----
 
-  //  Begin Utility Methods 保留区块，不与页面元素交互
+  //-----Begin Utility Methods 保留区块，不与页面元素交互-----
   //  Return copy of stored anchor map;minimizes overhead
   copyeAnchorMap = function() {
     return $.extend(true, {}, stateMap.anchor_map);
   };
-  //  End Utility Methods 保留区块，不与页面元素交互
+  //-----End Utility Methods 保留区块，不与页面元素交互-----
 
-  //  Begin 创建和操作DOM的函数
+  //-----Begin 创建和操作 DOM 的函数-----
   //  Begin DOM method /setJqueryMap/
   setJqueryMap = function() {
     var $container = stateMap.$container;
@@ -72,7 +73,7 @@ spa.shell = (function() {
   //  返回值：布尔型
   //    *true -滑块动画激活
   //    *false -滑块动画不激活
-  //  状态：  设置stateMap.is_chat_retracted
+  //  状态：  设置 stateMap.is_chat_retracted
   //    *true -滑块是收起状态
   //    *false -滑块是展开状态
   //
@@ -181,9 +182,9 @@ spa.shell = (function() {
     return bool_return;
   };
   //  End DOM method /changeAnchorPart/
-  //  End 创建和操作DOM的函数
+  //-----End 创建和操作 DOM 的函数-----
 
-  //  Begin Event Handles jquery事件处理函数
+  //-----Begin Event Handles jquery 事件处理函数-----
   //  Begin event handler /onHashchange/
   //  Purpose: Handles the hashchange event
   //  Arguments:
@@ -221,8 +222,8 @@ spa.shell = (function() {
           toggleChat(true);
           break;
         case 'closed':
-        toggleChat(false);
-        break;
+          toggleChat(false);
+          break;
         default:
           toggleChat(false);
           delete anchor_map_proposed.chat;
@@ -243,9 +244,9 @@ spa.shell = (function() {
     return false;
   };
   //  End Event handler /onClickChat/
-  //  End Event Handles jquery事件处理函数
+  //-----End Event Handles jquery 事件处理函数-----
 
-  //  Begin 公共方法
+  //-----Begin 公共方法-----
   //  Beigin public method /initModule/
   initModule = function($container) {
     //  Load HTML and map jQuery collections
@@ -284,5 +285,5 @@ spa.shell = (function() {
   return {
     initModule: initModule
   };
-  //  End 公共方法
+  //-----End 公共方法-----
 }());

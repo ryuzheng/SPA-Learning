@@ -1,4 +1,5 @@
-//spa.js
+/*spa.js
+ */
 //Root namespace module
 
 var spa = (function() {
