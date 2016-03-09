@@ -32,4 +32,17 @@ spa.chat = (function() {
   //  End DOM method /setJqueryMap/
   //-----End DOM methods-----
 
+  //-----Begin event handlers-----
+  //-----End event handlers-----
+
+  //-----Begin public methods-----
+  //  Begin public method /configModule/
+  //  Purpose: Adjust configuration of allowed keys
+  //  Arguments: A map of settable keys and values
+  //    * color_name -color to use
+  //  Setting:
+  //    * configMap.settable_map declares allowed keys
+  //  Returns: true
+  //  Throws: none
+  //
 })
