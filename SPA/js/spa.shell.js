@@ -2,6 +2,8 @@
  *Shell module for SPA
  */
 
+/*global $, spa */
+
 spa.shell = (function() {
   //-----Begin 声明所有变量-----
   var
@@ -46,7 +48,7 @@ spa.shell = (function() {
 
   //-----Begin Utility Methods 保留区块，不与页面元素交互-----
   //  Return copy of stored anchor map;minimizes overhead
-  copyeAnchorMap = function() {
+  copyAnchorMap = function() {
     return $.extend(true, {}, stateMap.anchor_map);
   };
   //-----End Utility Methods 保留区块，不与页面元素交互-----
@@ -143,7 +145,7 @@ spa.shell = (function() {
   //
   changeAnchorPart = function(arg_map) {
     var
-      anchor_map_revise = copyeAnchorMap(),
+      anchor_map_revise = copyAnchorMap(),
       bool_return = true,
       key_name, key_name_dep;
 
@@ -196,7 +198,7 @@ spa.shell = (function() {
   //   * Compares proposed application state with current
   //   * Adjust the application only where proposed state differs from existing
   onHashchange = function(event) {
-    var anchor_map_previous = copyeAnchorMap(),
+    var anchor_map_previous = copyAnchorMap(),
       anchor_map_proposed,
       _s_chat_previous, _s_chat_proposed,
       s_chat_proposed;

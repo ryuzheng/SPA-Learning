@@ -3,6 +3,7 @@
  *Chat feature module for SPA
  */
 
+/* global $, spa */
 spa.chat = (function() {
   //-----Begin module scope variables-----
   var
