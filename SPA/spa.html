@@ -1,13 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+<!--
+  spa.html
+  spa browser document
+-->
 
 <head>
   <meta charset="UTF-8">
-  <title>SPA Starter</title>
+  <!-- ie9+ rendering support for latest standarde -->
+  <meta http-equiv="Content-Type" content="text/html"; charset=ISO-8859-1">
+  <meta http-equiv="X-UA-Compatible" content="IE-edge" />
+  <title>SPA</title>
 
-  <!--css引用-->
-  <link rel="stylesheet" href="css/spa.css" type="text/css">
-  <link rel="stylesheet" href="css/spa.shell.css" type="text/css">
+  <!--第三方css引用-->
+
+  <!--自己编写的css引用-->
+  <link rel="stylesheet" href="css/spa.css" type="text/css" />
+  <link rel="stylesheet" href="css/spa.chat.css" type="text/css" />
+  <link rel="stylesheet" href="css/spa.shell.css" type="text/css" />
 
   <!--第三方js引用-->
   <script src="http://cdn.bootcss.com/jquery/2.2.1/jquery.min.js"></script>
@@ -15,7 +25,10 @@
 
   <!--自己编写的js引用-->
   <script src="js/spa.js" charset="utf-8"></script>
+  <script src="js/spa.util.js" charset="utf-8"></script>
+  <script src="js/spa.model.js" charset="utf-8"></script>
   <script src="js/spa.shell.js" charset="utf-8"></script>
+  <script src="js/spa.chat.js" charset="utf-8"></script>
   <script type="text/javascript">
     $(function() {
       spa.initModule($('#spa'));

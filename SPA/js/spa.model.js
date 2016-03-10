@@ -1,6 +1,6 @@
 /*
  *spa.model.js
- *Module module
+ *Model module
  */
 
  spa.model=(function(){return{};}());
