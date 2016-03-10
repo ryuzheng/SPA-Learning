@@ -66,7 +66,7 @@ spa.shell = (function() {
 
   //  Begin DOM method /toggleChat/
   //  功能： 展开或收起聊天滑块
-  //  判断：
+  //  实参：
   //    *do_extend -真则展开，伪则收起
   //    *callback  -避免出现竞争条件，同时在展开和收起，在动画结束时执行
   //  参数：
@@ -128,7 +128,7 @@ spa.shell = (function() {
 
   //  Begin DOm method /changeAnchorPart/
   //  功能： 对锚进行原子更新
-  //  判断：
+  //  实参：
   //   *arg_map - URI 锚需要修改的那一部分的映射
   //  返回：
   //   *true - URI 锚部分已经修改

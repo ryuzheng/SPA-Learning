@@ -46,11 +46,11 @@ spa.chat = (function() {
   //  Returns: true
   //  Throws: none
   //
-  configModule=function(input_map){
+  configModule = function(input_map) {
     spa.util.setConfigMap({
-      input_map:input_map,
-      settable_map:configMap.settable_map,
-      config_map:configMap
+      input_map: input_map,
+      settable_map: configMap.settable_map,
+      config_map: configMap
     });
     return true;
   };
@@ -63,9 +63,9 @@ spa.chat = (function() {
   //  Returns: true
   //  Throws: none
   //
-  initModule=function($container){
+  initModule = function($container) {
     $container.html(configMap.main_html);
-    stateMap.$container=$container;
+    stateMap.$container = $container;
     setJqueryMap();
     return true;
   };
@@ -73,8 +73,8 @@ spa.chat = (function() {
 
   // return public methods
   return {
-    configModule:configModule,
-    initModule:initModule
+    configModule: configModule,
+    initModule: initModule
   };
   //-----End public methods-----
 }());
