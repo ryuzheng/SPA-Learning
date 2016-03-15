@@ -14,6 +14,7 @@ spa.shell = (function() {
           closed: true
         }
       },
+      resize_interval: 200,
       main_html: String() +
         '<div class="spa-shell-head">' +
         '<div class="spa-shell-head-logo"></div>' +
@@ -28,10 +29,12 @@ spa.shell = (function() {
         '<div class="spa-shell-modal"></div>'
     },
     stateMap = {
-      anchor_map: {}
+      $container: undefined,
+      anchor_map: {},
+      resize_idto: undefined
     },
     jqueryMap = {},
-    copyAnchorMap, setJqueryMap, changeAnchorPart, onHashchange, setChatAnchor, initModule;
+    copyAnchorMap, setJqueryMap, changeAnchorPart, onHashchange, onResize, setChatAnchor, initModule;
   //-----End 声明所有变量-----
 
   //-----Begin Utility Methods 保留区块，不与页面元素交互-----
@@ -51,7 +54,7 @@ spa.shell = (function() {
   };
   //  End DOM method /setJqueryMap/
 
-  //  Begin DOm method /changeAnchorPart/
+  //  Begin DOM method /changeAnchorPart/
   //  功能： 对锚进行原子更新
   //  实参：
   //   *arg_map - URI 锚需要修改的那一部分的映射
@@ -114,7 +117,21 @@ spa.shell = (function() {
   //  End DOM method /changeAnchorPart/
   //-----End 创建和操作 DOM 的函数-----
 
-  //-----Begin Event Handles  jquery事件处理函数-----
+  //-----Begin Event Handlers  jquery事件处理函数-----
+  // Begin Event handler /onResize/
+  onResize = function() {
+    if (stateMap.resize_idto) {
+      return true;
+    }
+
+    spa.chat.handleResize();
+    stateMap.resize_idto = setTimeout(function() {
+      stateMap.resize_idto = undefined;
+    }, configMap.resize_interval);
+    return true;
+  };
+  // End Event handler /onResize/
+
   //  Begin event handler /onHashchange/
   //  Purpose: Handles the hashchange event
   //  Arguments:
@@ -127,10 +144,10 @@ spa.shell = (function() {
   //   * Adjust the application only where proposed state differs from existing and is allowed by anchor schema
   onHashchange = function(event) {
     var
-    _s_chat_previous, _s_chat_proposed, s_chat_proposed,
-    anchor_map_proposed,
-    is_ok = true,
-    anchor_map_previous = copyAnchorMap();
+      _s_chat_previous, _s_chat_proposed, s_chat_proposed,
+      anchor_map_proposed,
+      is_ok = true,
+      anchor_map_previous = copyAnchorMap();
 
     //  Attempt to parse anchor
     try {
@@ -242,6 +259,7 @@ spa.shell = (function() {
     //  This is done /after/ all feature modules are configured and initialized, otherwise they will not be ready to handle the trigger event, which is used to ensure the anchor is considered on-load
     //
     $(window)
+      .bind('resize', onResize)
       .bind('hashchange', onHashchange)
       .trigger('hashchange');
   };
